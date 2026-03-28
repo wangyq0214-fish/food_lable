@@ -1,0 +1,22 @@
+[
+  {
+    "id": "ADMIN-LABEL-NO-MISLEAD",
+    "category": "标识监督管理",
+    "title": "标签内容合规性提示",
+    "severity": "medium",
+    "type": "regex",
+    "enabled": true,
+    "priority": 80,
+    "tags": ["label_admin"],
+    "source_file": "data/cleaned/3.1  食品标识监督管理办法.txt",
+    "condition": {
+      "pattern": "(疗效|治疗|药效)",
+      "flags": []
+    },
+    "description_template": "发现可能涉及功能性或医疗暗示的字样，建议按监督管理办法复核。",
+    "suggestion_template": "删除或替换可能引发误导的表述，确保标签信息真实、客观。",
+    "standard_refs": [
+      {"standard": "食品标识监督管理办法", "clause": "禁止误导性内容相关条款"}
+    ]
+  }
+]

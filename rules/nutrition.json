@@ -1,0 +1,78 @@
+[
+  {
+    "id": "NUTR-REGEX-SODIUM-NG",
+    "category": "营养成分表",
+    "title": "营养成分单位错误-钠",
+    "severity": "high",
+    "type": "regex",
+    "enabled": true,
+    "priority": 10,
+    "tags": ["GB28050"],
+    "source_file": "data/cleaned/2.1 GB 28050-2025 食品安全国家标准　预包装食品营养标签通则.txt",
+    "condition": {
+      "pattern": "钠\\s*\\d+(?:\\.\\d+)?\\s*ng\\b",
+      "flags": ["IGNORECASE"],
+      "evidence_pattern": "钠[^\\n]{0,20}ng"
+    },
+    "description_template": "钠使用了ng单位，营养标签中钠应以mg标示。",
+    "suggestion_template": "将钠单位修正为mg，并复核对应数值。",
+    "standard_refs": [
+      {"standard": "GB 28050-2025", "clause": "2.3"}
+    ],
+    "examples": {
+      "positive": ["钠 16ng"],
+      "negative": ["钠 16mg"]
+    }
+  },
+  {
+    "id": "NUTR-TERM-CARB",
+    "category": "营养成分表",
+    "title": "术语不规范-碳水化合物",
+    "severity": "medium",
+    "type": "regex",
+    "enabled": true,
+    "priority": 20,
+    "tags": ["GB28050"],
+    "source_file": "data/cleaned/2.1 GB 28050-2025 食品安全国家标准　预包装食品营养标签通则.txt",
+    "condition": {
+      "pattern": "碳水化物",
+      "flags": []
+    },
+    "description_template": "发现“碳水化物”表述，标准术语应为“碳水化合物”。",
+    "suggestion_template": "将“碳水化物”更正为“碳水化合物”。",
+    "standard_refs": [
+      {"standard": "GB 28050-2025", "clause": "2.5.3"}
+    ],
+    "examples": {
+      "positive": ["碳水化物 57.6g"],
+      "negative": ["碳水化合物 57.6g"]
+    }
+  },
+  {
+    "id": "NUTR-THRESHOLD-LOW-SUGAR",
+    "category": "文字广告语",
+    "title": "低糖声称可能不合规",
+    "severity": "high",
+    "type": "threshold",
+    "enabled": true,
+    "priority": 30,
+    "tags": ["GB28050", "claim"],
+    "source_file": "data/cleaned/2.1 GB 28050-2025 食品安全国家标准　预包装食品营养标签通则.txt",
+    "condition": {
+      "claim_keyword": "低糖",
+      "field_path": "nutrition.sugar_g",
+      "operator": ">",
+      "threshold": 5,
+      "unit": "g/100g|100mL"
+    },
+    "description_template": "出现“低糖”声称，但糖含量为{value}，高于阈值{threshold}{unit}。",
+    "suggestion_template": "删除低糖声称，或调整配方使糖含量满足≤{threshold}{unit}。",
+    "standard_refs": [
+      {"standard": "GB 28050-2025", "clause": "附录C.1"}
+    ],
+    "examples": {
+      "positive": ["低糖... 糖 6.5g/100g"],
+      "negative": ["低糖... 糖 4.5g/100g"]
+    }
+  }
+]

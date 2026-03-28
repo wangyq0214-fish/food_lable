@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Food Label Rule Schema",
+  "type": "object",
+  "required": ["id", "category", "title", "severity", "type", "enabled"],
+  "properties": {
+    "id": {"type": "string"},
+    "category": {"type": "string"},
+    "title": {"type": "string"},
+    "severity": {"type": "string", "enum": ["high", "medium", "low"]},
+    "type": {"type": "string", "enum": ["regex", "threshold", "cross_field", "custom_func"]},
+    "enabled": {"type": "boolean"},
+    "priority": {"type": "integer", "default": 100},
+    "tags": {"type": "array", "items": {"type": "string"}},
+    "condition": {
+      "type": "object",
+      "description": "Condition payload by rule type"
+    },
+    "description_template": {"type": "string"},
+    "suggestion_template": {"type": "string"},
+    "standard_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "standard": {"type": "string"},
+          "clause": {"type": "string"}
+        }
+      }
+    },
+    "examples": {
+      "type": "object",
+      "properties": {
+        "positive": {"type": "array", "items": {"type": "string"}},
+        "negative": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}
+

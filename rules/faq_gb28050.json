@@ -1,0 +1,22 @@
+[
+  {
+    "id": "FAQ28050-NRVT-CHECK",
+    "category": "GB28050问答",
+    "title": "NRV%标示建议复核",
+    "severity": "low",
+    "type": "regex",
+    "enabled": true,
+    "priority": 70,
+    "tags": ["GB28050", "FAQ"],
+    "source_file": "data/cleaned/2.1《 预包装食品营养标签通则》问答.txt",
+    "condition": {
+      "pattern": "NRV%",
+      "flags": ["IGNORECASE"]
+    },
+    "description_template": "发现NRV%标示，建议结合营养标签问答核对计算与展示格式。",
+    "suggestion_template": "复核NRV%计算依据、修约规则与展示形式。",
+    "standard_refs": [
+      {"standard": "GB 28050-2025 问答", "clause": "NRV%相关问答"}
+    ]
+  }
+]

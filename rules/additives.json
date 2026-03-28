@@ -1,0 +1,22 @@
+[
+  {
+    "id": "ADDITIVES-NAME-CHECK",
+    "category": "食品添加剂",
+    "title": "添加剂标示名称建议复核",
+    "severity": "medium",
+    "type": "regex",
+    "enabled": true,
+    "priority": 90,
+    "tags": ["GB2760"],
+    "source_file": "data/cleaned/4.1 GB2760-2024食品添加剂使用标准.txt",
+    "condition": {
+      "pattern": "(防腐剂|甜味剂|着色剂)",
+      "flags": []
+    },
+    "description_template": "发现添加剂类别相关标示，请结合GB2760复核名称与使用范围。",
+    "suggestion_template": "核对添加剂通用名称、功能类别和允许使用范围/限量。",
+    "standard_refs": [
+      {"standard": "GB 2760-2024", "clause": "添加剂名称与使用范围相关条款"}
+    ]
+  }
+]

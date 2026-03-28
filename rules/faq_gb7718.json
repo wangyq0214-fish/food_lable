@@ -1,0 +1,22 @@
+[
+  {
+    "id": "FAQ7718-ALLERGEN-HIGHLIGHT",
+    "category": "GB7718问答",
+    "title": "致敏物质提示建议复核",
+    "severity": "medium",
+    "type": "regex",
+    "enabled": true,
+    "priority": 60,
+    "tags": ["GB7718", "FAQ"],
+    "source_file": "data/cleaned/1.2 《预包装食品标签通则》问答.txt",
+    "condition": {
+      "pattern": "(过敏|致敏)",
+      "flags": []
+    },
+    "description_template": "发现过敏/致敏相关内容，建议按问答口径核对提示方式与位置。",
+    "suggestion_template": "结合GB7718问答，检查致敏原提示是否清晰、易识别。",
+    "standard_refs": [
+      {"standard": "GB 7718-2025 问答", "clause": "致敏原相关问答"}
+    ]
+  }
+]

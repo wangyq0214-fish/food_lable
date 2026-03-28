@@ -1,0 +1,1 @@
+python -m openclaw_skill.cli "test\2 标签来找茬\1.1 问题标签.docx" --debug-ocr --debug-ocr-file "outputs\my_ocr_raw.json"
