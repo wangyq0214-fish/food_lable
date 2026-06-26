@@ -17,3 +17,5 @@ def test_retrieval_smoke() -> None:
         first = results[0]
         assert "sources" in first, f"No sources for query: {q}"
         assert len(first["sources"]) > 0, f"Empty sources for query: {q}"
+    for q in queries:
+        print(q)
